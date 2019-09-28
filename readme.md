@@ -8,6 +8,9 @@ php-common-xxxxxxxにすでに入っていると言われるが、実際はな�
 下記で入る。問題になっているphp-commonを無視して、remiリポジトリから入れる。
 `sudo yum install php-pecl-zip --exclude=php-common --enablerepo=remi-php73`
 
+*追記*
+`--exclude=php-common`はおそらく関係ない。リポジトリの指定のとき、PHP -V 7.3.xなのに`remi-php72`とか指定していたからバージョン違いで入らなかっただけっぽい。
+
 ### 外部のサーバーで開発する場合
 `npm run watch`だけでは動かないので、`php artisan serve --host=0.0.0.0`を同時に実行する。
 また、browsersyncも設定しないと3000番で見えない↓
