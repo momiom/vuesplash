@@ -5,7 +5,7 @@
 ### PHPのphp-zipモジュールをいれる。
 phpのインストール時、どうしてもphp-zipが入らなかった。
 php-common-xxxxxxxにすでに入っていると言われるが、実際はない。
-下記ので入る。問題になっているphp-commonを無視して、remiリポジトリから入れる。
+下記で入る。問題になっているphp-commonを無視して、remiリポジトリから入れる。
 `sudo yum install php-pecl-zip --exclude=php-common --enablerepo=remi-php73`
 
 ### 外部のサーバーで開発する場合
