@@ -2,6 +2,15 @@
 
 ## 設定
 
+### ssh周り
+* ポート変更
+`/etc/ssh/sshd_config`を編集
+
+*接続できないときは*
+* firewallの確認。空いてない場合は許可する。 `firewall-cmd --add-port=20022/tcp --zone=public --permanent`
+* .sshディレクトリ周りの権限。 クライアント、サーバー共に.sshディレクトリは`700`、クライアントの秘密鍵とサーバーの公開鍵は`600`
+`/var/log/secure`にエラー吐いているので接続できないときにはまず確認。
+
 ### PHPのphp-zipモジュールをいれる。
 phpのインストール時、どうしてもphp-zipが入らなかった。
 php-common-xxxxxxxにすでに入っていると言われるが、実際はない。
