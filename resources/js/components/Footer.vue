@@ -6,18 +6,25 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    async logout() {
-      await this.$store.dispatch("auth/logout");
+import { mapState, mapGetters } from 'vuex'
 
-      this.$router.push("/login");
-    }
-  },
+export default {
   computed: {
-    isLogin() {
-      return this.$store.getters["auth/check"];
+    ...mapState({
+      apiStatus: state => state.auth.apiStatus
+    }),
+    ...mapGetters({
+      isLogin: 'auth/check'
+    })
+  },
+    methods: {
+    async logout () {
+      await this.$store.dispatch('auth/logout')
+
+      if (this.apiStatus) {
+        this.$router.push('/login')
+      }
     }
   }
 };
-</script>
+</script>Í
