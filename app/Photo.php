@@ -9,16 +9,23 @@ class Photo extends Model
 {
     /** プライマリキーの型 */
     protected $keyType = 'string';
+
     /** IDの桁数 */
     const ID_LENGTH = 12;
+
     /** JSONに含めるアクセサ */
     protected $appends = [
         'url',
     ];
+
     /** JSONに含める属性 */
     protected $visible = [
         'id', 'owner', 'url',
     ];
+
+    /** 1ページあたりの取得数 */
+    protected $perPage = 2;
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
@@ -26,6 +33,7 @@ class Photo extends Model
             $this->setId();
         }
     }
+
     /**
      * ランダムなID値をid属性に代入する
      */
@@ -33,6 +41,7 @@ class Photo extends Model
     {
         $this->attributes['id'] = $this->getRandomId();
     }
+
     /**
      * ランダムなID値を生成する
      * @return string
@@ -52,6 +61,7 @@ class Photo extends Model
         }
         return $id;
     }
+
     /**
      * アクセサ - url
      * @return string
