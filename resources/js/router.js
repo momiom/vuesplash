@@ -41,7 +41,12 @@ const routes = [
   {
     path: '/500',
     component: SystemError
-  }
+  },
+  {
+    path: '/photos/:id',
+    component: PhotoDetail,
+    props: true
+  },
 ]
 
 // VueRouterインスタンスを作成する

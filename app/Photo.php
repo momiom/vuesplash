@@ -68,7 +68,11 @@ class Photo extends Model
      */
     public function getUrlAttribute()
     {
-        return Storage::cloud()->url($this->attributes['filename']);
+        \Log::debug(Storage::disk('public')->url($this->attributes['filename']));
+        $url = Storage::disk('public')->url($this->attributes['filename']);
+        $url = str_replace(':8000//', ':8000/', $url);
+        \Log::debug($url);
+        return $url;
     }
     
     /**

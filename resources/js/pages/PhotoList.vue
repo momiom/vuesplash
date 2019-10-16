@@ -1,9 +1,16 @@
 <template>
-  <div class="photo-list">
+  
+  <div v-if="hasPost" class="photo-list">
     <div class="grid">
       <Photo class="grid__item" v-for="photo in photos" :key="photo.id" :item="photo" />
     </div>
     <Pagination :current-page="currentPage" :last-page="lastPage" />
+  </div>
+
+  <div v-else>
+    <p style="text-align: center; color: #8a8a8a;">
+    Nothing post.
+    </p>
   </div>
 </template>
 
@@ -28,7 +35,8 @@ export default {
     return {
       photos: [],
       currentPage: 0,
-      lastPage: 0
+      lastPage: 0,
+      hasPost: false,
     };
   },
   methods: {
@@ -42,6 +50,7 @@ export default {
       this.photos = response.data.data;
       this.currentPage = response.data.current_page;
       this.lastPage = response.data.last_page;
+      this.hasPost = response.data.total != 0;
       console.log(JSON.stringify(response.data, '', 4));
     }
   },
